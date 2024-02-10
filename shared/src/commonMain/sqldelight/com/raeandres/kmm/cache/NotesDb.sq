@@ -9,7 +9,7 @@ insertNote:
 INSERT INTO Notes(id,name,description,createdDate)
 VALUES(?,?,?,?);
 
-removeNote:
+removeAllNotes:
 DELETE FROM Notes;
 
 selectAllNote:
