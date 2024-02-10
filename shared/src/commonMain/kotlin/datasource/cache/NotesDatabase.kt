@@ -9,6 +9,8 @@ internal class NotesDatabase(databaseDriverFactory: DatabaseDriverFactory){
 
 
     internal fun clearDatabase(){
-
+        dbQuery.removeAllNotes()
     }
+
+    
 }
