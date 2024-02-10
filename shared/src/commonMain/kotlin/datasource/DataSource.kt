@@ -1,5 +1,6 @@
 package datasource
 
+import com.squareup.sqldelight.db.SqlDriver
 import model.Note
 
 interface NotesDataSource {
@@ -9,3 +10,6 @@ interface NotesDataSource {
 }
 
 expect fun getNoteFromDataSource(): NotesDataSource
+expect class DatabaseDriverFactory{
+    fun createDriver(): SqlDriver
+}

@@ -53,6 +53,12 @@ kotlin {
     }
 }
 
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.raeandres.kmm.cache"
+    }
+}
+
 android {
     namespace = "org.example.project.shared"
     compileSdk = libs.versions.android.compileSdk.get().toInt()

@@ -1,0 +1,17 @@
+CREATE TABLE Notes (
+     id INTEGER NOT NULL,
+     name TEXT NOT NULL,
+     description TEXT,
+     createdDate TEXT NOT NULL
+);
+
+insertNote:
+INSERT INTO Notes(id,name,description,createdDate)
+VALUES(?,?,?,?);
+
+removeNote:
+DELETE FROM Notes;
+
+selectAllNote:
+SELECT Notes.* FROM Notes;
+
