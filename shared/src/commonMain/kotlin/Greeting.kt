@@ -1,7 +1,10 @@
+import kotlin.random.Random
+
 class Greeting {
-    private val platform = getPlatform()
+//    private val platform = getPlatform()
 
     fun greet(): String {
-        return "Hello, ${platform.name}!"
+        val firstWord = if (Random.nextBoolean()) "Hi" else "Hello!"
+        return "$firstWord Guess what it is! > !"
     }
 }
