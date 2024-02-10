@@ -32,4 +32,21 @@ internal class NotesDatabase(databaseDriverFactory: DatabaseDriverFactory){
     }
 
 
+    internal fun createNote(note: Note) {
+        dbQuery.insertNote(
+            id = note.id.toLong(),
+            name = note.name,
+            description = note.description,
+            createdDate = note.createdDate
+        )
+    }
+
+    private fun createNotes(notes: List<Note>){
+        dbQuery.transaction {
+            notes.forEach { note ->
+                createNote(note)
+            }
+        }
+    }
+
 }
