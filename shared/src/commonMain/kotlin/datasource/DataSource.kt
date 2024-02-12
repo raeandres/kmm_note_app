@@ -14,7 +14,9 @@ interface NotesDataSource {
    fun addNote()
    fun removeNote()
 
-   suspend fun testApi(): String
+   fun testApi(result: (String) -> Unit)
+
+   fun testInvokeApiCall(): Unit
 
 }
 

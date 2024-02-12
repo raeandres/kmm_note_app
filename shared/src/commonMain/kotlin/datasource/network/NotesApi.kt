@@ -5,7 +5,15 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
+import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import model.Note
 
@@ -41,8 +49,26 @@ class NotesApi : NotesDataSource {
         TODO("Not yet implemented")
     }
 
-    override suspend fun testApi(): String {
-        return httpClient.get("https://api.spacexdata.com/v5/launches").body<String>().toString()
+    override fun testApi(result: (String) -> Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val api = httpClient.get("https://api.spacexdata.com/v5/launches")
+
+            if (api.call.response.status == HttpStatusCode.OK) {
+               result.invoke(api.body())
+            }
+        }
+
+    }
+
+
+    override fun testInvokeApiCall() {
+        CoroutineScope(Dispatchers.IO).launch{
+            val result = httpClient.get("https://api.spacexdata.com/v5/launches")
+
+           if (result.call.response.status == HttpStatusCode.OK) {
+               println("API Result: ${result.body<String>()}")
+           }
+        }
     }
 
 
