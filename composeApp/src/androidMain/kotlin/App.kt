@@ -12,15 +12,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import datasource.NotesDataSource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import javax.sql.DataSource
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun App() {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
-        val greeting = remember { Greeting().greet() }
+        val testContentFromCommonKmmCommon  = remember {
+                ""
+        }
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Button(onClick = { showContent = !showContent }) {
                 Text("Click me!")
@@ -28,7 +35,8 @@ fun App() {
             AnimatedVisibility(showContent) {
                 Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                     Image(painterResource("compose-multiplatform.xml"), null)
-                    Text("Compose: $greeting")
+                    Text("Compose: $testContentFromCommonKmmCommon")
+
                 }
             }
         }

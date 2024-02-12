@@ -6,15 +6,6 @@ import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import model.Note
 
-class AndroidPlatform : NotesDataSource {
-    override fun note(note: Note): Note {
-        return note
-    }
-
-
-}
-
-actual fun getNoteFromDataSource(): NotesDataSource = AndroidPlatform()
 
 
 actual class DatabaseDriverFactory(private val context: Context) {
