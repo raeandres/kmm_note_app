@@ -1,5 +1,5 @@
-interface Platform {
+interface CommonPlatform {
     val name: String
 }
 
-//expect fun getPlatform(): Platform
+expect fun testContent(): CommonPlatform
